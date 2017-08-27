@@ -4,20 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
@@ -40,10 +32,12 @@ public class PaperSelectPage extends Fragment {
 
     private Button submit;
     private String mSelectedItem;
+    private int num;
 
-    public static PaperSelectPage getInstance(Handler handler){
+    public static PaperSelectPage getInstance(int num, Handler handler){
         PaperSelectPage fragment = new PaperSelectPage();
         fragment.handler = handler;
+        fragment.num = num;
         return fragment;
     }
 
@@ -56,6 +50,7 @@ public class PaperSelectPage extends Fragment {
         submit = (Button) view.findViewById(R.id.submit);
         submit.setOnClickListener((target) -> {
             Message msg = handler.obtainMessage();
+            msg.what = num;
             msg.obj = mSelectedItem;
             handler.sendMessage(msg);
         });

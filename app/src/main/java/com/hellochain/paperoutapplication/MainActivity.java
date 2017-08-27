@@ -2,6 +2,7 @@ package com.hellochain.paperoutapplication;
 
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
         this.pageHandler = new PageHandler();
 
         this.tabCycleLayout = (TabCycleLayout) findViewById(R.id.tab_cycle_layout);
-        this.tabCycleLayout.setOnPageSelectListener(0, () -> PaperSelectPage.getInstance(pageHandler));
-        this.tabCycleLayout.setOnPageSelectListener(0, () -> PaperSelectPage.getInstance(pageHandler));
-        this.tabCycleLayout.setOnPageSelectListener(0, () -> PaperSelectPage.getInstance(pageHandler));
+        this.tabCycleLayout.setOnPageSelectListener(0, () -> PaperSelectPage.getInstance(0, pageHandler));
+        this.tabCycleLayout.setOnPageSelectListener(0, () -> PaperSelectPage.getInstance(1, pageHandler));
+        this.tabCycleLayout.setOnPageSelectListener(0, () -> PaperSelectPage.getInstance(2, pageHandler));
     }
 
     private View secondPage() {
@@ -43,7 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
             switch (tabCycleLayout.currentPage()) {
                 case 0:
-                    Log.d("TEST", "" + msg.obj);
+                    if (msg.obj == null) {
+                        Snackbar.make(tabCycleLayout, getResources().getString(R.string.msg_need_choose_paper), Snackbar.LENGTH_LONG).show();
+                    } else {
+                        tabCycleLayout.next();
+                    }
                     break;
                 case 1:
 

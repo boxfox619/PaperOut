@@ -31,6 +31,7 @@
             app:scale_height="10"
             app:scale_top="0"
             app:scale_left="0">
+
         </LinearLayout>
 
     </com.ssomai.android.scalablelayout.ScalableLayout>

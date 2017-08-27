@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">PaperOutApplication</string>
 
-    <string name="guide_select_paper">발급받을 증명서를 선택해주세요</string>
+    <string name="guide_select_paper">발급받을 <b>증명서</b>를 <b>선택</b>해주세요</string>
     <string name="paper_select_submit">발급받기</string>
+
+    <string name="msg_need_choose_paper">증명서를 선택해 주세요!</string>
 
 
     <string name="server_host"></string>
