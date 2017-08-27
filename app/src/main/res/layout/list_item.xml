@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:gravity="center"
     android:padding="10dp">
 
-    <TextView
-        android:id="@+id/textView"
+    <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:scale_base_width="100"
+        app:scale_base_height="10">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            app:scale_width="100"
+            app:scale_height="10"
+            app:scale_top="2"
+            app:scale_left="0"
+            app:scale_textsize="6"/>
+
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+
 
 </LinearLayout>
