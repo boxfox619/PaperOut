@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.hellochain.paperoutapplication.view.tablayout.FingerprintDetectionPage;
+import com.hellochain.paperoutapplication.view.tablayout.PaperDownloadFragment;
 import com.hellochain.paperoutapplication.view.tablayout.PaperSelectPage;
 import com.hellochain.paperoutapplication.view.tablayout.TabCycleLayout;
 
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         this.tabCycleLayout = (TabCycleLayout) findViewById(R.id.tab_cycle_layout);
         this.tabCycleLayout.setOnPageSelectListener(0, () -> PaperSelectPage.getInstance(0, pageHandler));
         this.tabCycleLayout.setOnPageSelectListener(1, () -> FingerprintDetectionPage.getInstance(1, pageHandler));
-        this.tabCycleLayout.setOnPageSelectListener(2, () -> PaperSelectPage.getInstance(2, pageHandler));
+        this.tabCycleLayout.setOnPageSelectListener(2, () -> PaperDownloadFragment.getInstance(2, pageHandler));
     }
 
     private View secondPage() {
