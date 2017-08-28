@@ -58,7 +58,7 @@ public class PaperSelectPage extends Fragment {
         loadPapers(paperList);
 
         AQuery aq = new AQuery(getContext());
-        aq.ajax(getResources().getString(R.string.server_host) + getResources().getString(R.string.get_paper_list), JSONArray.class, new AjaxCallback<JSONArray>() {
+        aq.ajax(getResources().getString(R.string.server_host) + getResources().getString(R.string.url_get_paper_list), JSONArray.class, new AjaxCallback<JSONArray>() {
             @Override
             public void callback(String url, JSONArray result, AjaxStatus status) {
                 if (status.getCode() == 200) {
