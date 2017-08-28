@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@android:color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:scale_base_width="100"
+        app:scale_base_height="150">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo"
+            app:scale_width="70"
+            app:scale_height="50"
+            app:scale_left="15"
+            app:scale_top="20"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_university"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            app:scale_height="14"
+            app:scale_width="15"
+            app:scale_left="8"
+            app:scale_top="72"
+            app:scale_textsize="4.5"/>
+        
+        <EditText
+            android:id="@+id/et_university"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:scale_height="14"
+            app:scale_width="60"
+            app:scale_left="23"
+            app:scale_top="68"
+            app:scale_textsize="4.5"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_search"
+            android:clickable="true"
+            app:scale_height="7"
+            app:scale_width="7"
+            app:scale_left="85"
+            app:scale_top="71"
+            app:scale_textsize="4.5"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"
+            app:scale_height="0.5"
+            app:scale_width="84"
+            app:scale_left="8"
+            app:scale_top="80" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_name"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            app:scale_height="14"
+            app:scale_width="15"
+            app:scale_left="8"
+            app:scale_top="88"
+            app:scale_textsize="4.5"/>
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:scale_height="14"
+            app:scale_width="60"
+            app:scale_left="23"
+            app:scale_top="84"
+            app:scale_textsize="4.5"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"
+            app:scale_height="0.5"
+            app:scale_width="84"
+            app:scale_left="8"
+            app:scale_top="97" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_number"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            app:scale_height="14"
+            app:scale_width="15"
+            app:scale_left="8"
+            app:scale_top="104"
+            app:scale_textsize="4.5"/>
+
+        <EditText
+            android:id="@+id/et_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:background="@android:color/transparent"
+            app:scale_height="14"
+            app:scale_width="60"
+            app:scale_left="23"
+            app:scale_top="100"
+            app:scale_textsize="4.5"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"
+            app:scale_height="0.5"
+            app:scale_width="84"
+            app:scale_left="8"
+            app:scale_top="113" />
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_btn_submit"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/border_round_blue_button"
+            app:scale_height="14"
+            app:scale_width="84"
+            app:scale_left="7"
+            app:scale_top="129"
+            app:scale_textsize="4.5" />
+
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+
+</LinearLayout>

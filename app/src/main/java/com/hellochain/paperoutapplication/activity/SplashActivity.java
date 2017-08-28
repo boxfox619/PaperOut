@@ -18,6 +18,6 @@ public class SplashActivity extends AppCompatActivity {
 
         Realm.init(this);
 
-        startActivity(new Intent(this, SigninActivity.class));
+        startActivity(new Intent(this, SignupActivity.class));
     }
 }
