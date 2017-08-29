@@ -22,6 +22,14 @@
     <string name="msg_need_choose_paper">증명서를 선택해 주세요!</string>
     <string name="msg_login_fail">로그인에 실패했습니다</string>
 
+    <string name="request_paper_guide"><b>증명셔 요청</b>이 들어왔습니다</string>
+    <string name="request_paper_kind"><b>요청서류</b> : </string>
+    <string name="request_paper_company"><b>요청 기업</b> : </string>
+    <string name="request_paper_duration"><b>제출 기한</b> : </string>
+
+    <string name="requeust_paper_later">보류</string>
+    <string name="requeust_paper_send">전송</string>
+
 
     <string name="server_host"></string>
     <string name="url_get_paper_list"></string>

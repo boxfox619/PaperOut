@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:scale_base_width="100"
+        app:scale_base_height="140">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+            app:scale_width="30"
+            app:scale_height="13"
+            app:scale_left="35"
+            app:scale_top="20"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/colorAccent"
+            android:text="@string/request_paper_guide"
+            android:textAlignment="center"
+            app:scale_width="100"
+            app:scale_height="13"
+            app:scale_left="0"
+            app:scale_top="45"
+            app:scale_textsize="5"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/request_paper_kind"
+            android:textAlignment="center"
+            app:scale_width="100"
+            app:scale_height="11"
+            app:scale_left="0"
+            app:scale_top="65"
+            app:scale_textsize="4"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/request_paper_company"
+            android:textAlignment="center"
+            app:scale_width="100"
+            app:scale_height="11"
+            app:scale_left="0"
+            app:scale_top="76"
+            app:scale_textsize="4"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/request_paper_duration"
+            android:textAlignment="center"
+            app:scale_width="100"
+            app:scale_height="11"
+            app:scale_left="0"
+            app:scale_top="87"
+            app:scale_textsize="4"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/border_round_button"
+            android:text="@string/requeust_paper_later"
+            app:scale_width="32"
+            app:scale_height="11"
+            app:scale_left="17"
+            app:scale_top="105"
+            app:scale_textsize="4" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/border_round_gray_button"
+            android:text="@string/requeust_paper_send"
+            app:scale_width="32"
+            app:scale_height="11"
+            app:scale_left="52"
+            app:scale_top="105"
+            app:scale_textsize="4" />
+
+
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+
+</RelativeLayout>
