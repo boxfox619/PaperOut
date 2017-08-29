@@ -35,5 +35,10 @@ dependencies {
     compile 'com.ssomai:android.scalablelayout:2.1.1'
     compile 'com.googlecode.android-query:android-query:0.25.9'
     compile 'com.android.support:design:26.0.0-alpha1'
+
+    compile 'com.github.ajalt.reprint:core:3.1.0@aar' // required: supports marshmallow devices
+    compile 'com.github.ajalt.reprint:reprint_spass:3.1.0@aar' // optional: support for pre-marshmallow Samsung devices
+    compile 'com.github.ajalt.reprint:rxjava:3.1.0@aar' // optional: the RxJava 1 interface
+    compile 'com.github.ajalt.reprint:rxjava2:3.1.0@aar' // optional: the RxJava 2 interface
     testCompile 'junit:junit:4.12'
 }

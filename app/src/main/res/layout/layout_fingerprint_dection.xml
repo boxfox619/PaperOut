@@ -14,6 +14,7 @@
         app:scale_base_height="55">
 
         <TextView
+            android:id="@+id/tv_guide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -22,7 +23,7 @@
             android:layout_weight="0.5"
             app:scale_width="100"
             app:scale_height="13"
-            app:scale_top="0"
+            app:scale_top="4"
             app:scale_left="0"
             app:scale_textsize="8"/>
     </com.ssomai.android.scalablelayout.ScalableLayout>
