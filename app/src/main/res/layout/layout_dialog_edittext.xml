@@ -1,22 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/etPassword"
+    <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:lines="1"
-        android:maxLines="1"
-        android:inputType="textPassword"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium">
+        android:layout_height="match_parent"
+        app:scale_base_width="100"
+        app:scale_base_height="40">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:text="@string/dialog_please_enter_text"
+            app:scale_width="80"
+            app:scale_left="5"
+            app:scale_top="5"
+            app:scale_height="10"
+            app:scale_textsize="4.5"/>
 
-        <requestFocus />
-    </EditText>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:scale_width="100"
+            app:scale_left="0"
+            app:scale_top="17"
+            app:scale_height="0.5"
+            android:background="@android:color/darker_gray"></View>
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:lines="1"
+            android:maxLines="1"
+            android:inputType="textPassword"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:scale_width="80"
+            app:scale_left="10"
+            app:scale_top="25"
+            app:scale_height="10"
+            app:scale_textsize="4">
+
+            <requestFocus />
+        </EditText>
+
+    </com.ssomai.android.scalablelayout.ScalableLayout>
 
 
 </LinearLayout>

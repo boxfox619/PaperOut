@@ -16,6 +16,7 @@
 
     <string name="guide_detection_fingerprint"><b>지문</b>을 <b>입력</b>해주세요</string>
     <string name="enter_password_direct">암호 직접 입력하기</string>
+    <string name="dialog_please_enter_text">비밀번호를 입력해 주세요</string>
 
     <string name="guide_paper_box">증명서 보관함</string>
 

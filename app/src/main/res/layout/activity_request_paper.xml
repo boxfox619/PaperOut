@@ -18,8 +18,6 @@
             app:scale_height="13"
             app:scale_left="35"
             app:scale_top="20"/>
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -33,6 +31,7 @@
             app:scale_textsize="5"/>
 
         <TextView
+            android:id="@+id/tv_kind"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/request_paper_kind"
@@ -44,6 +43,7 @@
             app:scale_textsize="4"/>
 
         <TextView
+            android:id="@+id/tv_company"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/request_paper_company"
@@ -56,6 +56,7 @@
             />
 
         <TextView
+            android:id="@+id/tv_duration"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/request_paper_duration"
@@ -68,6 +69,7 @@
             />
 
         <Button
+            android:id="@+id/btn_later"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="?android:attr/borderlessButtonStyle"
@@ -80,6 +82,7 @@
             app:scale_textsize="4" />
 
         <Button
+            android:id="@+id/btn_send"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="?android:attr/borderlessButtonStyle"

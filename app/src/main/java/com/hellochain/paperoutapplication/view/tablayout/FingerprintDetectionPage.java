@@ -18,6 +18,8 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.hellochain.paperoutapplication.R;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.ViewHolder;
 
 import org.json.JSONArray;
 
@@ -47,21 +49,11 @@ public class FingerprintDetectionPage extends Fragment {
     private void showPasswordInputDialog() {
         View view = getActivity().getLayoutInflater().inflate(R.layout.layout_dialog_edittext, null);
         final EditText etPassword = (EditText) view.findViewById(R.id.etPassword);
-        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-        dialog.setTitle("비밀번호 입력");
-        dialog.setView(view);
-        dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                String password = etPassword.getText().toString();
-            }
-        });
-        dialog.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d("TESAT", "tasdasfsa");
-            }
-        });
+
+        DialogPlus dialog = DialogPlus.newDialog(getContext())
+                .setContentHolder(new ViewHolder(view))
+                .setExpanded(false)
+                .create();
         dialog.show();
     }
 }
