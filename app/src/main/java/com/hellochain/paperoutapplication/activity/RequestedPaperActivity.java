@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.hellochain.paperoutapplication.R;
 
-public class RequestPaperActivity extends AppCompatActivity {
+public class RequestedPaperActivity extends AppCompatActivity {
     private TextView tvKind, tvCompany, tvDuration;
     private Button btnLater, btnSend;
 
