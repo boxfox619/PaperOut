@@ -13,12 +13,12 @@ import com.hellochain.paperoutapplication.R;
  * Created by boxfox on 2017-08-27.
  */
 
-public class PaperDownloadFragment extends Fragment {
+public class PaperPrintFinishFragment extends Fragment {
     private Handler handler;
     private int num;
 
-    public static PaperDownloadFragment getInstance(int num, Handler handler){
-        PaperDownloadFragment fragment = new PaperDownloadFragment();
+    public static PaperPrintFinishFragment getInstance(int num, Handler handler){
+        PaperPrintFinishFragment fragment = new PaperPrintFinishFragment();
         fragment.handler = handler;
         fragment.num = num;
         return fragment;
@@ -27,7 +27,7 @@ public class PaperDownloadFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_download_paper, container, false);
+        View view = inflater.inflate(R.layout.layout_finish_print_paper, container, false);
         return view;
     }
 }

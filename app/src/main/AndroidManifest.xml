@@ -26,7 +26,8 @@
             android:name=".activity.SignupActivity"
             android:theme="@style/NoActionBar" />
         <activity android:name=".activity.RequestedPaperActivity" />
-        <activity android:name=".activity.PaperPrintActivity"></activity>
+        <activity android:name=".activity.PaperPrintActivity"
+            android:theme="@style/NoActionBar" ></activity>
     </application>
 
 </manifest>

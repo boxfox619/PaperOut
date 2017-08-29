@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:scale_base_width="100"
-        app:scale_base_height="15">
+        app:scale_base_height="23">
 
         <TextView
             android:layout_width="match_parent"
@@ -26,16 +26,28 @@
             android:layout_weight="0.5"
             app:scale_width="100"
             app:scale_height="13"
-            app:scale_top="0"
+            app:scale_top="3"
             app:scale_left="0"
             app:scale_textsize="7"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/list_item_selected"
+            app:scale_width="100"
+            app:scale_height="0.5"
+            app:scale_left="0"
+            app:scale_top="22.5"/>
         </com.ssomai.android.scalablelayout.ScalableLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/layout_guide"
-        android:layout_above="@+id/layout_submit">
+        android:layout_above="@+id/layout_submit"
+        android:background="@drawable/border_layout"
+        android:gravity="center">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +63,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:scale_base_width="100"
-        app:scale_base_height="22">
+        app:scale_base_height="28">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/list_item_selected"
+            app:scale_width="100"
+            app:scale_height="0.5"
+            app:scale_left="0"
+            app:scale_top="0"/>
 
         <Button
             android:id="@+id/submit"
@@ -62,7 +82,7 @@
             android:background="@drawable/border_round_button"
             app:scale_width="100"
             app:scale_height="18"
-            app:scale_top="4"
+            app:scale_top="8"
             app:scale_left="0"
             app:scale_textsize="7" />
 
