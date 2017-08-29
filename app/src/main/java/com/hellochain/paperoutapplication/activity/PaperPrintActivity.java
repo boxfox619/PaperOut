@@ -1,5 +1,6 @@
 package com.hellochain.paperoutapplication.activity;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,9 @@ import com.hellochain.paperoutapplication.view.tablayout.PaperSelectPage;
 import com.hellochain.paperoutapplication.view.tablayout.TabCycleLayout;
 
 public class PaperPrintActivity extends AppCompatActivity {
+    public static final int ACTION_TYPE_PRINT = 0;
+    public static final int ACTION_TYPE_DOWNLOAD = 1;
+    public static final int ACTION_TYPE_SEND = 2;
     private TabCycleLayout tabCycleLayout;
     private Handler pageHandler;
 
@@ -22,12 +26,32 @@ public class PaperPrintActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paper_print);
 
+
         this.pageHandler = new PageHandler();
 
         this.tabCycleLayout = (TabCycleLayout) findViewById(R.id.tab_cycle_layout);
         this.tabCycleLayout.setOnPageSelectListener(0, () -> PaperSelectPage.getInstance(0, pageHandler));
         this.tabCycleLayout.setOnPageSelectListener(1, () -> FingerprintDetectionPage.getInstance(1, pageHandler));
         this.tabCycleLayout.setOnPageSelectListener(2, () -> PaperPrintFinishFragment.getInstance(2, pageHandler));
+        init();
+    }
+
+    private void init() {
+        Intent intent = getIntent();
+        int type = intent.getIntExtra("type", ACTION_TYPE_PRINT);
+        if (type != ACTION_TYPE_PRINT) {
+            this.tabCycleLayout.next();
+            switch(type){
+                case ACTION_TYPE_DOWNLOAD:
+                    //do somting
+                    this.tabCycleLayout.setOnPageSelectListener(2, () -> PaperPrintFinishFragment.getInstance(2, pageHandler));
+                    break;
+                case ACTION_TYPE_SEND:
+                    //do somting
+                    this.tabCycleLayout.setOnPageSelectListener(2, () -> PaperPrintFinishFragment.getInstance(2, pageHandler));
+                    break;
+            }
+        }
     }
 
     private View secondPage() {
@@ -54,6 +78,7 @@ public class PaperPrintActivity extends AppCompatActivity {
                     break;
                 case 1:
 
+                    //after fingerprint detection
                     break;
 
                 default:
