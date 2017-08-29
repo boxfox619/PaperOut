@@ -31,6 +31,12 @@
     <string name="requeust_paper_later">보류</string>
     <string name="requeust_paper_send">전송</string>
 
+    <string name="action_print">인증서 발급</string>
+
+    <string name="search_paper">증명서 검색</string>
+    <string name="paper_btn_send">SEND</string>
+    <string name="paper_btn_download">DOWNLOAD</string>
+
 
     <string name="server_host"></string>
     <string name="url_get_paper_list"></string>

@@ -1,17 +1,16 @@
 package com.hellochain.paperoutapplication;
 
-import android.os.Handler;
-import android.os.Message;
-import android.support.design.widget.Snackbar;
+import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-import com.hellochain.paperoutapplication.view.tablayout.FingerprintDetectionPage;
-import com.hellochain.paperoutapplication.view.tablayout.PaperDownloadFragment;
-import com.hellochain.paperoutapplication.view.tablayout.PaperSelectPage;
-import com.hellochain.paperoutapplication.view.tablayout.TabCycleLayout;
+import com.hellochain.paperoutapplication.activity.PaperPrintActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,5 +19,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setCustomView(R.layout.toolbar_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_print_paper:
+                startActivity(new Intent(this, PaperPrintActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
