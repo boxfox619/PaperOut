@@ -10,10 +10,13 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.hellochain.paperoutapplication.activity.PaperPrintActivity;
+import com.hellochain.paperoutapplication.view.paperlist.LinearListUitl;
 
 public class MainActivity extends AppCompatActivity {
+    private LinearListUitl.LinearList paperListView;
     private Button downloadBtn, sendBtn;
     private ImageView searchBtn;
 
@@ -22,10 +25,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setCustomView(R.layout.toolbar_main);
+
+        paperListView = LinearListUitl.wrap((LinearLayout)findViewById(R.id.listView));
 
         searchBtn = (ImageView) findViewById(R.id.iv_search);
         searchBtn.setOnClickListener((view) -> {

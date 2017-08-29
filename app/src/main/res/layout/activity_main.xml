@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:scale_base_width="100"
-        app:scale_base_height="130">
+        app:scale_base_height="135">
 
         <TextView
             android:layout_width="match_parent"
@@ -42,7 +42,6 @@
             app:scale_top="23"
             app:scale_left="17.5"/>
 
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -64,6 +63,17 @@
             app:scale_top="24.5"
             app:scale_left="73"/>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_layout"
+            app:scale_width="65"
+            app:scale_height="75"
+            app:scale_top="40"
+            app:scale_left="17.5">
+
+        </ScrollView>
+
         <Button
             android:id="@+id/btn_send"
             android:layout_width="match_parent"
@@ -72,7 +82,7 @@
             android:background="@drawable/border_round_button"
             app:scale_width="29"
             app:scale_height="11"
-            app:scale_top="110"
+            app:scale_top="120"
             app:scale_left="19"
             app:scale_textsize="4"/>
 
@@ -84,7 +94,7 @@
             android:background="@drawable/border_round_gray_button"
             app:scale_width="29"
             app:scale_height="11"
-            app:scale_top="110"
+            app:scale_top="120"
             app:scale_left="51"
             app:scale_textsize="4"/>
     </com.ssomai.android.scalablelayout.ScalableLayout>
