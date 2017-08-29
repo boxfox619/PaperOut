@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="70dp"
     android:gravity="center">
 
     <com.ssomai.android.scalablelayout.ScalableLayout
@@ -23,9 +22,9 @@
             android:layout_weight="0.5"
             app:scale_width="100"
             app:scale_height="13"
-            app:scale_top="4"
+            app:scale_top="23"
             app:scale_left="0"
-            app:scale_textsize="8"/>
+            app:scale_textsize="6"/>
     </com.ssomai.android.scalablelayout.ScalableLayout>
 
     <ImageView
@@ -52,9 +51,9 @@
             android:layout_weight="0.5"
             app:scale_width="100"
             app:scale_height="13"
-            app:scale_top="43"
+            app:scale_top="33"
             app:scale_left="0"
-            app:scale_textsize="6"/>
+            app:scale_textsize="5"/>
 
     </com.ssomai.android.scalablelayout.ScalableLayout>
 

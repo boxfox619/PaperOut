@@ -13,14 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.ajalt.reprint.core.AuthenticationFailureReason;
 import com.github.ajalt.reprint.core.AuthenticationListener;
 import com.github.ajalt.reprint.core.Reprint;
 import com.hellochain.paperoutapplication.R;
-
-import org.json.JSONArray;
 
 /**
  * Created by boxfox on 2017-08-27.
@@ -44,7 +41,7 @@ public class FingerprintDetectionPage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_fingerprint_dection, container, false);
+        View view = inflater.inflate(R.layout.layout_fingerprint_detection, container, false);
         view.findViewById(R.id.enter_password_direct).setOnClickListener((v) -> showPasswordInputDialog());
         guideTextView = (TextView) view.findViewById(R.id.tv_guide);
         Reprint.authenticate(new AuthenticationListener() {
