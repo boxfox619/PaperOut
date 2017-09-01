@@ -64,6 +64,10 @@ public class LinearListUitl {
             }
         }
 
+        public boolean isItemSelected(){
+            return mSelectedItem!=null;
+        }
+
         private View replaceView(View target, boolean check) {
             int idx = layout.indexOfChild(target);
             layout.removeView(target);
