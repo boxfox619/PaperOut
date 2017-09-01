@@ -40,6 +40,8 @@
     <string name="paper_btn_send">SEND</string>
     <string name="paper_btn_download">DOWNLOAD</string>
 
+    <string name="warning_need_permission">권한을 허용하지 않아 서비스를 사용할 수 없습니다!</string>
+
 
     <string name="server_host"></string>
     <string name="url_get_paper_list"></string>
