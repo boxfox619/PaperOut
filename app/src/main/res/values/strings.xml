@@ -30,6 +30,7 @@
 
     <string name="error_retry_fingerprint">지문을 다시 입력해 주세요!</string>
     <string name="error_unable_fingerprint">지문인식을 사용할 수 없습니다!</string>
+    <string name="err_unknown_item">알 수 없는 오류가 발생했습니다.</string>
 
     <string name="requeust_paper_later">보류</string>
     <string name="requeust_paper_send">전송</string>

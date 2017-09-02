@@ -79,10 +79,10 @@
             android:layout_height="wrap_content"
             android:text="@string/paper_select_submit"
             android:background="@drawable/border_round_button"
-            app:scale_width="100"
+            app:scale_width="96"
             app:scale_height="18"
             app:scale_top="8"
-            app:scale_left="0"
+            app:scale_left="2"
             app:scale_textsize="7" />
 
         </com.ssomai.android.scalablelayout.ScalableLayout>
