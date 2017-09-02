@@ -46,6 +46,7 @@
 
     <string name="server_host"></string>
     <string name="url_get_paper_list"></string>
+    <string name="url_get_printed_paper_list"></string>
     <string name="url_login"></string>
     <string name="url_register"></string>
     <string name="url_paper_download"></string>

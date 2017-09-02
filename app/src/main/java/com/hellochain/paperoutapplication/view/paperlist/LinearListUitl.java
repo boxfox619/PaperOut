@@ -6,6 +6,8 @@ import android.widget.LinearLayout;
 
 import com.hellochain.paperoutapplication.R;
 
+import java.util.List;
+
 /**
  * Created by boxfox on 2017-08-29.
  */
@@ -38,6 +40,10 @@ public class LinearListUitl {
                 }
             }
             return null;
+        }
+
+        public void loadPapers(List<String> items) {
+            loadPapers(items.toArray(new String[items.size()]));
         }
 
         public void loadPapers(String[] items) {

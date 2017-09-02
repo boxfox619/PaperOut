@@ -19,16 +19,28 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.hellochain.paperoutapplication.activity.PaperPrintActivity;
+import com.hellochain.paperoutapplication.data.User;
 import com.hellochain.paperoutapplication.view.paperlist.LinearListUitl;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import io.realm.Realm;
 
 public class MainActivity extends AppCompatActivity {
     private LinearListUitl.LinearList paperListView;
     private Button downloadBtn, sendBtn;
     private ImageView searchBtn;
+
+    private List<String> printedPaperList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setCustomView(R.layout.toolbar_main);
 
         paperListView = LinearListUitl.wrap((LinearLayout) findViewById(R.id.listView));
-        paperListView.loadPapers(getPrintedPapers());
         searchBtn = (ImageView) findViewById(R.id.iv_search);
         searchBtn.setOnClickListener((view) -> {
+
         });
 
         downloadBtn = (Button) findViewById(R.id.btn_download);
@@ -59,13 +71,29 @@ public class MainActivity extends AppCompatActivity {
         sendBtn.setOnClickListener((view) -> {
             Toast.makeText(this, "아직 지원되지 않는 기능입니다!", Toast.LENGTH_LONG).show();
         });
+        loadPrintedPapers();
     }
 
-    private String[] getPrintedPapers() {
-
-        return new String[0];
+    private void loadPrintedPapers(){
+        Realm realm = Realm.getDefaultInstance();
+        AQuery aq = new AQuery(this);
+        Map<String, Object> params = new HashMap<>();
+        params.put("user", realm.where(User.class).findFirst().getId());
+        aq.ajax(getString(R.string.server_host)+getString(R.string.url_get_printed_paper_list),params, JSONArray.class, new AjaxCallback<JSONArray>(){
+            @Override
+            public void callback(String url, JSONArray arr, AjaxStatus status) {
+                List<String> papers = new ArrayList<String>();
+                for(int i = 0 ; i < arr.length(); i++){
+                    try {
+                        papers.add(arr.getString(i));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                paperListView.loadPapers(papers);
+            }
+        });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

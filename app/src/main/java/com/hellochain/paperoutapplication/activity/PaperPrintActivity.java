@@ -102,9 +102,7 @@ public class PaperPrintActivity extends AppCompatActivity {
                     }
                     break;
                 case 2:
-
-                    break;
-                default:
+                    finish();
                     break;
             }
         }
