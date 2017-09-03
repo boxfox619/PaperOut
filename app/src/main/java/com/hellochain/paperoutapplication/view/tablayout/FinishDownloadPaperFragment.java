@@ -38,14 +38,14 @@ public class FinishDownloadPaperFragment extends Fragment {
         ((Button)view.findViewById(R.id.btn_view)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                showImage();
             }
         });
 
         ((Button)view.findViewById(R.id.btn_finish)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                finish();
             }
         });
         return view;
