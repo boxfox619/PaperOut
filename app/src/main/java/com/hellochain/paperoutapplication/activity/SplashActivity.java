@@ -12,8 +12,10 @@ import android.widget.Toast;
 
 import com.hellochain.paperoutapplication.MainActivity;
 import com.hellochain.paperoutapplication.R;
+import com.hellochain.paperoutapplication.data.User;
 
 import io.realm.Realm;
+
 
 public class SplashActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 123;
@@ -23,19 +25,21 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        Realm.init(this);
-
-        if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP_MR1 || checkPermission()){
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP_MR1 || checkPermission()) {
             nextStep();
         }
     }
 
-    private void nextStep(){
-        startActivity(new Intent(this, MainActivity.class));
+    private void nextStep() {
+        Realm.init(this);
+//        if (Realm.getDefaultInstance().where(User.class).count() == 0) {
+//            startActivity(new Intent(this, SigninActivity.class));
+//        } else
+            startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 
-    private boolean checkPermission(){
+    private boolean checkPermission() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
@@ -50,11 +54,11 @@ public class SplashActivity extends AppCompatActivity {
 
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
-        if(requestCode==PERMISSION_REQUEST_CODE){
-            if(grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 nextStep();
             } else {
-                Toast.makeText(this,getString(R.string.warning_need_permission), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.warning_need_permission), Toast.LENGTH_LONG).show();
 
             }
 

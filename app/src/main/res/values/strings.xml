@@ -19,6 +19,9 @@
     <string name="dialog_please_enter_text">비밀번호를 입력해 주세요</string>
 
     <string name="guide_paper_box">증명서 보관함</string>
+    <string name="guide_finish_download_paper"><b>다운로드</b>가 <b>완료</b>되었습니다! </string>
+    <string name="btn_check_paper">증명서 확인</string>
+    <string name="btn_finish">보관함 돌아가기</string>
 
     <string name="msg_need_choose_paper">증명서를 선택해 주세요!</string>
     <string name="msg_login_fail">로그인에 실패했습니다</string>

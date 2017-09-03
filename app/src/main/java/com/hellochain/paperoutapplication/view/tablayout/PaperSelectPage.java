@@ -35,7 +35,7 @@ public class PaperSelectPage extends Fragment {
     private Button submit;
     private int num;
 
-    public static PaperSelectPage getInstance(int num, Handler handler){
+    public static PaperSelectPage getInstance(int num, Handler handler) {
         PaperSelectPage fragment = new PaperSelectPage();
         fragment.handler = handler;
         fragment.num = num;
@@ -49,11 +49,14 @@ public class PaperSelectPage extends Fragment {
         View view = inflater.inflate(R.layout.layout_select_paper, container, false);
         listView = LinearListUitl.wrap((LinearLayout) view.findViewById(R.id.listView));
         submit = (Button) view.findViewById(R.id.submit);
-        submit.setOnClickListener((target) -> {
-            Message msg = handler.obtainMessage();
-            msg.what = num;
-            msg.obj = listView.getSelectedItem();
-            handler.sendMessage(msg);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Message msg = handler.obtainMessage();
+                msg.what = num;
+                msg.obj = listView.getSelectedItem();
+                handler.sendMessage(msg);
+            }
         });
 
         listView.loadPapers(paperList);

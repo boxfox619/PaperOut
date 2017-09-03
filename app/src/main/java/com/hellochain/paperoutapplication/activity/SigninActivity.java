@@ -1,6 +1,7 @@
 package com.hellochain.paperoutapplication.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,21 +43,27 @@ public class SigninActivity extends AppCompatActivity {
         });
         loginBtn = (Button) findViewById(R.id.btn_login);
         registerBtn = (Button) findViewById(R.id.btn_register);
-        loginBtn.setOnClickListener((view)->{
-            AQuery aq = new AQuery(this);
-            aq.ajax(getResources().getString(R.string.server_host)+getResources().getString(R.string.url_login), getParams(), JSONObject.class, new AjaxCallback<JSONObject>(){
-                @Override
-                public void callback(String url, JSONObject object, AjaxStatus status) {
-                    if(status.getCode() == 200){
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AQuery aq = new AQuery(SigninActivity.this);
+                aq.ajax(getResources().getString(R.string.server_host)+getResources().getString(R.string.url_login), getParams(), JSONObject.class, new AjaxCallback<JSONObject>(){
+                    @Override
+                    public void callback(String url, JSONObject object, AjaxStatus status) {
+                        if(status.getCode() == 200){
 
-                    }else{
-                        Snackbar.make(((View)loginBtn.getParent().getParent()), getResources().getString(R.string.msg_login_fail), Snackbar.LENGTH_SHORT).show();
+                        }else{
+                            Snackbar.make(((View)loginBtn.getParent().getParent()), getResources().getString(R.string.msg_login_fail), Snackbar.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
+                });
+            }
         });
-        registerBtn.setOnClickListener((view)->{
-            //move to register activity
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SigninActivity.this, SignupActivity.class));
+            }
         });
     }
 

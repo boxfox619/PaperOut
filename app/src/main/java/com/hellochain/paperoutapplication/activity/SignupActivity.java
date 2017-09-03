@@ -2,6 +2,7 @@ package com.hellochain.paperoutapplication.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -28,8 +29,10 @@ public class SignupActivity extends AppCompatActivity {
         et_name = (EditText) findViewById(R.id.et_name);
         et_number = (EditText) findViewById(R.id.et_number);
         submitBtn = (Button) findViewById(R.id.btn_submit);
-        submitBtn.setOnClickListener((view) -> {
-            AQuery aq = new AQuery(this);
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            AQuery aq = new AQuery(SignupActivity.this);
             aq.ajax(getResources().getString(R.string.server_host)+getResources().getString(R.string.url_register), getParams(), JSONObject.class, new AjaxCallback<JSONObject>(){
                 @Override
                 public void callback(String url, JSONObject object, AjaxStatus status) {
@@ -40,7 +43,7 @@ public class SignupActivity extends AppCompatActivity {
                     }
                 }
             });
-        });
+        }});
     }
 
     private Map<String, Object> getParams() {

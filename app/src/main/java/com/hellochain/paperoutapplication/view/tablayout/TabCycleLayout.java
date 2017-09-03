@@ -104,6 +104,11 @@ public class TabCycleLayout extends LinearLayout {
         renderFooter();
     }
 
+    public Fragment getCurrentTab(){
+        FragmentManager fragmentManager = ((AppCompatActivity) getContext()).getSupportFragmentManager();
+        return fragmentManager.findFragmentById(R.id.content);
+    }
+
     private void setContentView(Fragment fragment) {
         FragmentManager fragmentManager = ((AppCompatActivity) getContext()).getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

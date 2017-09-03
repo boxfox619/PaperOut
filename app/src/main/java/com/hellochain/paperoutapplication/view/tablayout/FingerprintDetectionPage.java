@@ -42,7 +42,12 @@ public class FingerprintDetectionPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_fingerprint_detection, container, false);
-        view.findViewById(R.id.enter_password_direct).setOnClickListener((v) -> showPasswordInputDialog());
+        view.findViewById(R.id.enter_password_direct).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPasswordInputDialog();
+            }
+        });
         guideTextView = (TextView) view.findViewById(R.id.tv_guide);
         Reprint.authenticate(new AuthenticationListener() {
             public void onSuccess(int moduleTag) {

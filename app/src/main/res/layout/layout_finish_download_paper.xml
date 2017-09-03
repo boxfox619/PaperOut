@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:id="@+id/layout_guide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:scale_base_width="100"
+        app:scale_base_height="100">
+
+        <ImageView
+            android:src="@drawable/ic_check"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:scale_width="30"
+            app:scale_height="30"
+            app:scale_top="10"
+            app:scale_left="35"/>
+
+        <TextView
+            android:id="@+id/tv_guide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/guide_finish_download_paper"
+            android:textColor="@color/colorAccent"
+            android:layout_weight="0.5"
+            app:scale_width="100"
+            app:scale_height="13"
+            app:scale_top="45"
+            app:scale_left="0"
+            app:scale_textsize="5"/>
+
+
+        <Button
+            android:id="@+id/btn_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_check_paper"
+            android:background="@drawable/border_round_button"
+            app:scale_width="50"
+            app:scale_height="15"
+            app:scale_top="60"
+            app:scale_left="25"
+            app:scale_textsize="4"/>
+
+        <Button
+            android:id="@+id/btn_finish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_finish"
+            android:background="@drawable/border_round_gray_button"
+            app:scale_width="50"
+            app:scale_height="15"
+            app:scale_top="80"
+            app:scale_left="25"
+            app:scale_textsize="4"/>
+
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+
+</RelativeLayout>

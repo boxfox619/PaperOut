@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -53,37 +54,46 @@ public class MainActivity extends AppCompatActivity {
 
         paperListView = LinearListUitl.wrap((LinearLayout) findViewById(R.id.listView));
         searchBtn = (ImageView) findViewById(R.id.iv_search);
-        searchBtn.setOnClickListener((view) -> {
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
         });
 
         downloadBtn = (Button) findViewById(R.id.btn_download);
         sendBtn = (Button) findViewById(R.id.btn_send);
 
-        downloadBtn.setOnClickListener((view) -> {
-            if (paperListView.isItemSelected()) {
-                String item = (String) paperListView.getSelectedItem();
+        downloadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (paperListView.isItemSelected()) {
+                    String item = (String) paperListView.getSelectedItem();
 
-            } else {
+                } else {
 
+                }
             }
         });
-        sendBtn.setOnClickListener((view) -> {
-            Toast.makeText(this, "아직 지원되지 않는 기능입니다!", Toast.LENGTH_LONG).show();
+        sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "아직 지원되지 않는 기능입니다!", Toast.LENGTH_LONG).show();
+            }
         });
-        loadPrintedPapers();
+        //loadPrintedPapers();
     }
 
-    private void loadPrintedPapers(){
+    private void loadPrintedPapers() {
         Realm realm = Realm.getDefaultInstance();
         AQuery aq = new AQuery(this);
         Map<String, Object> params = new HashMap<>();
         params.put("user", realm.where(User.class).findFirst().getId());
-        aq.ajax(getString(R.string.server_host)+getString(R.string.url_get_printed_paper_list),params, JSONArray.class, new AjaxCallback<JSONArray>(){
+        aq.ajax(getString(R.string.server_host) + getString(R.string.url_get_printed_paper_list), params, JSONArray.class, new AjaxCallback<JSONArray>() {
             @Override
             public void callback(String url, JSONArray arr, AjaxStatus status) {
                 List<String> papers = new ArrayList<String>();
-                for(int i = 0 ; i < arr.length(); i++){
+                for (int i = 0; i < arr.length(); i++) {
                     try {
                         papers.add(arr.getString(i));
                     } catch (JSONException e) {

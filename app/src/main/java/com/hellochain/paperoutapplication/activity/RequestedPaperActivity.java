@@ -2,6 +2,7 @@ package com.hellochain.paperoutapplication.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -22,7 +23,17 @@ public class RequestedPaperActivity extends AppCompatActivity {
 
         btnLater = (Button)findViewById(R.id.btn_later);
         btnSend = (Button)findViewById(R.id.btn_send);
-        btnLater.setOnClickListener((view)->{});
-        btnSend.setOnClickListener((view)->{});
+        btnLater.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 }
