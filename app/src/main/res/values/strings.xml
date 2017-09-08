@@ -17,9 +17,18 @@
     <string name="guide_detection_fingerprint"><b>지문</b>을 <b>입력</b>해주세요</string>
     <string name="enter_password_direct">암호 직접 입력하기</string>
     <string name="dialog_please_enter_text">비밀번호를 입력해 주세요</string>
+    <string name="dialog_please_enter_email">증명서를 전송할 이메일을 입력해 주세요</string>
+
+    <string name="guide_finish_send_paper">증명서 전송을 완료했습니다!</string>
+    <string name="guide_finish_send_paper_detail">선택하신 증명서를 전송하였습니다!</string>
+
+    <string name="success_send_paper">증명서 전송을 완료했습니다.</string>
+    <string name="fail_send_paper">증명서 전송을 실패했습니다.</string>
 
     <string name="guide_paper_box">증명서 보관함</string>
     <string name="guide_finish_download_paper"><b>다운로드</b>가 <b>완료</b>되었습니다! </string>
+    <string name="guide_finish_print_paper"><b>발급</b>이 <b>완료</b>되었습니다!</string>
+    <string name="guide_finish_print_paper_detail"><b>발급받은 증명서</b>는\n<b>보관함</b>에서 확인할 수 있습니다.</string>
     <string name="btn_check_paper">증명서 확인</string>
     <string name="btn_finish">보관함 돌아가기</string>
 
@@ -34,6 +43,7 @@
     <string name="error_retry_fingerprint">지문을 다시 입력해 주세요!</string>
     <string name="error_unable_fingerprint">지문인식을 사용할 수 없습니다!</string>
     <string name="err_unknown_item">알 수 없는 오류가 발생했습니다.</string>
+    <string name="error_worng_email">정확한 이메일을 입력해 주세요!</string>
 
     <string name="requeust_paper_later">보류</string>
     <string name="requeust_paper_send">전송</string>
@@ -53,4 +63,5 @@
     <string name="url_login"></string>
     <string name="url_register"></string>
     <string name="url_paper_download"></string>
+    <string name="url_paper_send"></string>
 </resources>

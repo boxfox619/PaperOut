@@ -32,6 +32,10 @@ public class LinearListUitl {
             this.layout = layout;
         }
 
+        public LinearLayout getView(){
+            return layout;
+        }
+
         public ListItem findItem(String text) {
             for (int i = 0; i < layout.getChildCount(); i++) {
                 ListItem item = (ListItem) layout.getChildAt(i);

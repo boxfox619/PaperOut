@@ -23,6 +23,7 @@ import com.hellochain.paperoutapplication.view.tablayout.FingerprintDetectionPag
 import com.hellochain.paperoutapplication.view.tablayout.FinishDownloadPaperFragment;
 import com.hellochain.paperoutapplication.view.tablayout.PaperPrintFinishFragment;
 import com.hellochain.paperoutapplication.view.tablayout.PaperSelectPage;
+import com.hellochain.paperoutapplication.view.tablayout.PaperSendFinishFragment;
 import com.hellochain.paperoutapplication.view.tablayout.TabCycleLayout;
 
 import java.io.File;
@@ -44,14 +45,13 @@ public class PaperPrintActivity extends AppCompatActivity {
         setContentView(R.layout.activity_paper_print);
         Reprint.initialize(this);
 
-
         this.pageHandler = new PageHandler();
 
         this.tabCycleLayout = (TabCycleLayout) findViewById(R.id.tab_cycle_layout);
         this.tabCycleLayout.setOnPageSelectListener(0, new TabCycleLayout.OnTabSelectedListener() {
             @Override
             public Fragment onSelected() {
-                return FinishDownloadPaperFragment.getInstance(0, pageHandler);
+                return PaperSelectPage.getInstance(0, pageHandler);
             }
         });
         this.tabCycleLayout.setOnPageSelectListener(1, new TabCycleLayout.OnTabSelectedListener() {
@@ -89,7 +89,7 @@ public class PaperPrintActivity extends AppCompatActivity {
                     this.tabCycleLayout.setOnPageSelectListener(2, new TabCycleLayout.OnTabSelectedListener() {
                         @Override
                         public Fragment onSelected() {
-                            return PaperPrintFinishFragment.getInstance(2, pageHandler);
+                            return PaperSendFinishFragment.getInstance(2, pageHandler);
                         }
                     });
                     break;
@@ -123,7 +123,7 @@ public class PaperPrintActivity extends AppCompatActivity {
                     if (actionType == ACTION_TYPE_DOWNLOAD) {
                         downloadPaper();
                     } else if (actionType == ACTION_TYPE_SEND) {
-
+                        sendPaper();
                     } else {
                         requestPrintPaper();
                     }
@@ -137,6 +137,29 @@ public class PaperPrintActivity extends AppCompatActivity {
 
     private void requestPrintPaper() {
 
+    }
+
+    private void sendPaper() {
+        String email = getIntent().getStringExtra("email");
+        String item = getIntent().getStringExtra("item");
+        if (item == null) {
+            Toast.makeText(this, getString(R.string.err_unknown_item), Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+        String requestUrl = getString(R.string.server_host) + getString(R.string.url_paper_send) + "?email=" + email + "&paper=" + item;
+        AQuery aq = new AQuery(this);
+        aq.ajax(requestUrl, String.class, new AjaxCallback<String>(){
+            @Override
+            public void callback(String url, String object, AjaxStatus status) {
+                if(status.getCode() == 200){
+                    tabCycleLayout.next();
+                }else{
+                    Toast.makeText(PaperPrintActivity.this, getString(R.string.fail_send_paper), Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+        });
     }
 
     private void downloadPaper() {

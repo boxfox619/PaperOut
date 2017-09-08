@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -25,16 +26,22 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP_MR1 || checkPermission()) {
-            nextStep();
-        }
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP_MR1 || checkPermission()) {
+                    nextStep();
+                }
+            }
+        }, 3000);
     }
 
     private void nextStep() {
         Realm.init(this);
-//        if (Realm.getDefaultInstance().where(User.class).count() == 0) {
-//            startActivity(new Intent(this, SigninActivity.class));
-//        } else
+        /*if (Realm.getDefaultInstance().where(User.class).count() == 0) {
+            startActivity(new Intent(this, SigninActivity.class));
+        } else*/
             startActivity(new Intent(this, MainActivity.class));
         finish();
     }
