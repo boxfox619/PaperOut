@@ -39,9 +39,9 @@ public class SplashActivity extends AppCompatActivity {
 
     private void nextStep() {
         Realm.init(this);
-        /*if (Realm.getDefaultInstance().where(User.class).count() == 0) {
+        if (Realm.getDefaultInstance().where(User.class).count() == 0) {
             startActivity(new Intent(this, SigninActivity.class));
-        } else*/
+        } else
             startActivity(new Intent(this, MainActivity.class));
         finish();
     }

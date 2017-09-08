@@ -13,6 +13,7 @@ import android.widget.EditText;
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
+import com.hellochain.paperoutapplication.MainActivity;
 import com.hellochain.paperoutapplication.R;
 
 import org.json.JSONObject;
@@ -46,7 +47,15 @@ public class SigninActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AQuery aq = new AQuery(SigninActivity.this);
+                String tmpEmail = "tjfh3217@gc.gachon.ac.kr";
+                String tmpPassword = "";
+                if (tmpEmail.equals(et_id.getText().toString()) && tmpPassword.equals(et_password.getText().toString())) {
+                    startActivity(new Intent(SigninActivity.this, MainActivity.class));
+                    finish();
+                }else{
+                    Snackbar.make(((View)loginBtn.getParent().getParent()), getResources().getString(R.string.msg_login_fail), Snackbar.LENGTH_SHORT).show();
+                }
+                /*AQuery aq = new AQuery(SigninActivity.this);
                 aq.ajax(getResources().getString(R.string.server_host)+getResources().getString(R.string.url_login), getParams(), JSONObject.class, new AjaxCallback<JSONObject>(){
                     @Override
                     public void callback(String url, JSONObject object, AjaxStatus status) {
@@ -56,7 +65,7 @@ public class SigninActivity extends AppCompatActivity {
                             Snackbar.make(((View)loginBtn.getParent().getParent()), getResources().getString(R.string.msg_login_fail), Snackbar.LENGTH_SHORT).show();
                         }
                     }
-                });
+                });*/
             }
         });
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +76,7 @@ public class SigninActivity extends AppCompatActivity {
         });
     }
 
-    private Map<String, String> getParams(){
+    private Map<String, String> getParams() {
         Map<String, String> params = new HashMap<String, String>();
         params.put("username", et_id.getText().toString());
         params.put("password", et_password.getText().toString());
