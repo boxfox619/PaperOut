@@ -12,18 +12,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:scale_base_width="100"
-        app:scale_base_height="150">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/logo"
-            app:scale_width="70"
-            app:scale_height="50"
-            app:scale_left="15"
-            app:scale_top="20"/>
+        app:scale_base_height="160">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/colorAccent"
+            android:textAlignment="center"
+            android:text="@string/guide_signup"
+            app:scale_width="100"
+            app:scale_height="15"
+            app:scale_left="0"
+            app:scale_top="20"
+            app:scale_textsize="5"/>
+
+        <TextView
+            android:id="@+id/tv_university"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/signup_university"
@@ -31,7 +35,7 @@
             app:scale_height="14"
             app:scale_width="15"
             app:scale_left="8"
-            app:scale_top="72"
+            app:scale_top="42"
             app:scale_textsize="4.5"/>
         
         <EditText
@@ -39,10 +43,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
+            android:maxLines="1"
             app:scale_height="14"
             app:scale_width="60"
             app:scale_left="23"
-            app:scale_top="68"
+            app:scale_top="38"
             app:scale_textsize="4.5"/>
 
         <ImageView
@@ -53,7 +58,7 @@
             app:scale_height="7"
             app:scale_width="7"
             app:scale_left="85"
-            app:scale_top="71"
+            app:scale_top="41"
             app:scale_textsize="4.5"/>
 
         <View
@@ -63,9 +68,10 @@
             app:scale_height="0.5"
             app:scale_width="84"
             app:scale_left="8"
-            app:scale_top="80" />
+            app:scale_top="49" />
 
         <TextView
+            android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/signup_name"
@@ -73,18 +79,19 @@
             app:scale_height="14"
             app:scale_width="15"
             app:scale_left="8"
-            app:scale_top="88"
+            app:scale_top="61"
             app:scale_textsize="4.5"/>
 
         <EditText
             android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:maxLines="1"
             android:background="@android:color/transparent"
             app:scale_height="14"
             app:scale_width="60"
             app:scale_left="23"
-            app:scale_top="84"
+            app:scale_top="57"
             app:scale_textsize="4.5"/>
 
         <View
@@ -94,9 +101,10 @@
             app:scale_height="0.5"
             app:scale_width="84"
             app:scale_left="8"
-            app:scale_top="97" />
+            app:scale_top="68" />
 
         <TextView
+            android:id="@+id/tv_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/signup_number"
@@ -104,7 +112,7 @@
             app:scale_height="14"
             app:scale_width="15"
             app:scale_left="8"
-            app:scale_top="104"
+            app:scale_top="80"
             app:scale_textsize="4.5"/>
 
         <EditText
@@ -112,11 +120,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="number"
+            android:maxLines="1"
             android:background="@android:color/transparent"
             app:scale_height="14"
             app:scale_width="60"
             app:scale_left="23"
-            app:scale_top="100"
+            app:scale_top="76"
             app:scale_textsize="4.5"/>
 
         <View
@@ -126,7 +135,79 @@
             app:scale_height="0.5"
             app:scale_width="84"
             app:scale_left="8"
-            app:scale_top="113" />
+            app:scale_top="87" />
+
+        <Button
+            android:id="@+id/btn_request_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_btn_request_code"
+            android:textStyle="bold"
+            android:background="@drawable/border_round_button"
+            app:scale_height="14"
+            app:scale_width="40"
+            app:scale_left="7"
+            app:scale_top="99"
+            app:scale_textsize="4.5" />
+
+        <Button
+            android:id="@+id/btn_request_code_again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_btn_request_code_again"
+            android:textStyle="bold"
+            android:background="@drawable/border_round_gray_button"
+            app:scale_height="14"
+            app:scale_width="40"
+            app:scale_left="50"
+            app:scale_top="99"
+            app:scale_textsize="4.5" />
+
+        <TextView
+            android:id="@+id/tv_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_guide_code"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            app:scale_height="14"
+            app:scale_width="26"
+            app:scale_left="12"
+            app:scale_top="120"
+            app:scale_textsize="4.5"/>
+
+        <EditText
+            android:id="@+id/et_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:background="@android:color/transparent"
+            android:maxLines="1"
+            android:maxLength="8"
+            app:scale_height="14"
+            app:scale_width="30"
+            app:scale_left="40"
+            app:scale_top="116"
+            app:scale_textsize="4.5"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"
+            app:scale_height="0.5"
+            app:scale_width="54"
+            app:scale_left="12"
+            app:scale_top="127" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_dark"
+            android:text="00:00"
+            app:scale_height="14"
+            app:scale_width="26"
+            app:scale_left="70"
+            app:scale_top="121"
+            app:scale_textsize="4.5"/>
 
         <Button
             android:id="@+id/btn_submit"
@@ -139,7 +220,7 @@
             app:scale_height="14"
             app:scale_width="84"
             app:scale_left="7"
-            app:scale_top="129"
+            app:scale_top="139"
             app:scale_textsize="4.5" />
 
     </com.ssomai.android.scalablelayout.ScalableLayout>

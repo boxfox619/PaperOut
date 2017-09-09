@@ -17,8 +17,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
-    private EditText et_university, et_name, et_number;
-    private Button submitBtn;
+    private EditText et_university, et_name, et_number, et_code;
+    private Button submitBtn,requestCodeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,24 +26,60 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         et_university = (EditText) findViewById(R.id.et_university);
+        (findViewById(R.id.tv_university)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_university.requestFocus();
+            }
+        });
         et_name = (EditText) findViewById(R.id.et_name);
+        (findViewById(R.id.tv_name)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_name.requestFocus();
+            }
+        });
         et_number = (EditText) findViewById(R.id.et_number);
+        (findViewById(R.id.tv_number)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_number.requestFocus();
+            }
+        });
+        et_code = (EditText) findViewById(R.id.et_code);
+        (findViewById(R.id.tv_code)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_code.requestFocus();
+            }
+        });
+        requestCodeBtn = (Button) findViewById(R.id.btn_request_code);
+        requestCodeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //인증번호 전송요청 구현 필요
+
+
+            }
+        });
         submitBtn = (Button) findViewById(R.id.btn_submit);
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            AQuery aq = new AQuery(SignupActivity.this);
-            aq.ajax(getResources().getString(R.string.server_host)+getResources().getString(R.string.url_register), getParams(), JSONObject.class, new AjaxCallback<JSONObject>(){
-                @Override
-                public void callback(String url, JSONObject object, AjaxStatus status) {
-                    if(status.getCode()==200){
+                AQuery aq = new AQuery(SignupActivity.this);
+                aq.ajax(getResources().getString(R.string.server_host) + getResources().getString(R.string.url_register), getParams(), JSONObject.class, new AjaxCallback<JSONObject>() {
+                    @Override
+                    public void callback(String url, JSONObject object, AjaxStatus status) {
+                        if (status.getCode() == 200) {
 
-                    }else{
+                        } else {
 
+                        }
                     }
-                }
-            });
-        }});
+                });
+            }
+        });
     }
 
     private Map<String, Object> getParams() {
