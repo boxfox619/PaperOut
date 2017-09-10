@@ -7,4 +7,7 @@
     <color name="list_item_selected">#EFEFEF</color>
 
     <color name="colorTabCircleActive">#97C6D1</color>
+
+    <color name="pin_active">#6194AA</color>
+    <color name="pin_deactive">#97C6D1</color>
 </resources>

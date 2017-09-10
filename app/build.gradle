@@ -25,15 +25,20 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    // required: supports marshmallow devices
+    // optional: support for pre-marshmallow Samsung devices
+    // optional: the RxJava 1 interface
+    // optional: the RxJava 2 interface
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.ssomai:android.scalablelayout:2.1.1'
     compile 'com.googlecode.android-query:android-query:0.25.9'
     compile 'com.android.support:design:26.0.0-alpha1'
-
-    compile 'com.github.ajalt.reprint:core:3.1.0@aar' // required: supports marshmallow devices
-    compile 'com.github.ajalt.reprint:reprint_spass:3.1.0@aar' // optional: support for pre-marshmallow Samsung devices
-    compile 'com.github.ajalt.reprint:rxjava:3.1.0@aar' // optional: the RxJava 1 interface
-    compile 'com.github.ajalt.reprint:rxjava2:3.1.0@aar' // optional: the RxJava 2 interface
+    compile 'com.github.ajalt.reprint:core:3.1.0@aar'
+    compile 'com.github.ajalt.reprint:reprint_spass:3.1.0@aar'
+    compile 'com.github.ajalt.reprint:rxjava:3.1.0@aar'
+    compile 'com.github.ajalt.reprint:rxjava2:3.1.0@aar'
+    compile 'com.patrickpissurno:ripple-effect:1.3.1'
     testCompile 'junit:junit:4.12'
 }

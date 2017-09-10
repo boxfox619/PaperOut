@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="TabCycleLayout">
-        <attr name="tabSize" format="integer"/>
+        <attr name="tabSize" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="PinInputKeyboard">
+        <attr name="pinLength" format="integer" />
+    </declare-styleable>
+
 </resources>
