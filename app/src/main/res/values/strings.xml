@@ -27,7 +27,7 @@
 
     <string name="guide_detection_fingerprint"><b>지문</b>을 <b>입력</b>해주세요</string>
     <string name="enter_password_direct">암호 직접 입력하기</string>
-    <string name="dialog_please_enter_text">비밀번호를 입력해 주세요</string>
+    <string name="dialog_please_enter_pin">Pin 번호를 입력해 주세요</string>
     <string name="dialog_please_enter_email">증명서를 전송할 이메일을 입력해 주세요</string>
 
     <string name="guide_finish_send_paper">증명서 전송을 완료했습니다!</string>

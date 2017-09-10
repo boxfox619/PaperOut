@@ -18,6 +18,7 @@ import com.github.ajalt.reprint.core.AuthenticationFailureReason;
 import com.github.ajalt.reprint.core.AuthenticationListener;
 import com.github.ajalt.reprint.core.Reprint;
 import com.hellochain.paperoutapplication.R;
+import com.hellochain.paperoutapplication.view.pinnumber.PinInputView;
 
 /**
  * Created by boxfox on 2017-08-27.
@@ -97,22 +98,17 @@ public class FingerprintDetectionPage extends Fragment {
 
     private void showPasswordInputDialog() {
         View view = getActivity().getLayoutInflater().inflate(R.layout.layout_dialog_edittext, null);
-        final EditText etPassword = (EditText) view.findViewById(R.id.etPassword);
+        PinInputView pinInputView = (PinInputView)view.findViewById(R.id.pin_input_view);
+        pinInputView.setOnFinishListener(new PinInputView.OnFinishEnterPin() {
+            @Override
+            public void onFinish(String pinStr) {
+                /*if(success)
+                    sendResultMsg(true);*/
+            }
+        });
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-        dialog.setTitle(getResources().getString(R.string.dialog_please_enter_text));
+        dialog.setTitle(getResources().getString(R.string.dialog_please_enter_pin));
         dialog.setView(view);
-        dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                String password = etPassword.getText().toString();
-            }
-        });
-        dialog.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d("TESAT", "tasdasfsa");
-            }
-        });
         dialog.show();
     }
 }

@@ -5,20 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/etPassword"
+    <com.hellochain.paperoutapplication.view.pinnumber.PinInputView
+        android:id="@+id/pin_input_view"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:lines="1"
-        android:maxLines="1"
-        android:inputType="textPassword"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium">
-
-        <requestFocus />
-    </EditText>
+        app:pinLength="6"/>
 
 
 </LinearLayout>

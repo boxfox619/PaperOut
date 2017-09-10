@@ -7,6 +7,8 @@ import android.widget.TextView;
 import com.hellochain.paperoutapplication.R;
 import com.hellochain.paperoutapplication.view.pinnumber.PinInputView;
 
+import io.realm.Realm;
+
 public class SetPinActivity extends AppCompatActivity {
     private PinInputView pinInputView;
 

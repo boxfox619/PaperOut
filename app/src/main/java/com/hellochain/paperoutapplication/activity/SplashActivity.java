@@ -38,13 +38,12 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void nextStep() {
-        startActivity(new Intent(this, SetPinActivity.class));
-        /*Realm.init(this);
+        Realm.init(this);
         if (Realm.getDefaultInstance().where(User.class).count() == 0) {
             startActivity(new Intent(this, SigninActivity.class));
         } else
             startActivity(new Intent(this, MainActivity.class));
-        finish();*/
+        finish();
     }
 
     private boolean checkPermission() {

@@ -15,11 +15,14 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.hellochain.paperoutapplication.MainActivity;
 import com.hellochain.paperoutapplication.R;
+import com.hellochain.paperoutapplication.data.User;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import io.realm.Realm;
 
 public class SigninActivity extends AppCompatActivity {
     private EditText et_id, et_password;
@@ -48,12 +51,18 @@ public class SigninActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String tmpEmail = "tjfh3217@gc.gachon.ac.kr";
-                String tmpPassword = "";
+                String tmpPassword = "12341234";
                 if (tmpEmail.equals(et_id.getText().toString()) && tmpPassword.equals(et_password.getText().toString())) {
+                    Realm realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
+                    User user = realm.createObject(User.class);
+                    user.setId(et_id.getText().toString());
+                    user.setPassword(et_password.getText().toString());
+                    realm.commitTransaction();
                     startActivity(new Intent(SigninActivity.this, MainActivity.class));
                     finish();
-                }else{
-                    Snackbar.make(((View)loginBtn.getParent().getParent()), getResources().getString(R.string.msg_login_fail), Snackbar.LENGTH_SHORT).show();
+                } else {
+                    Snackbar.make(((View) loginBtn.getParent().getParent()), getResources().getString(R.string.msg_login_fail), Snackbar.LENGTH_SHORT).show();
                 }
                 /*AQuery aq = new AQuery(SigninActivity.this);
                 aq.ajax(getResources().getString(R.string.server_host)+getResources().getString(R.string.url_login), getParams(), JSONObject.class, new AjaxCallback<JSONObject>(){

@@ -7,7 +7,7 @@
     <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:scale_base_height="120"
+        app:scale_base_height="130"
         app:scale_base_width="100">
 
         <LinearLayout

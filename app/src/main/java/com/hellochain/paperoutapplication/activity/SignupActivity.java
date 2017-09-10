@@ -1,5 +1,6 @@
 package com.hellochain.paperoutapplication.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,7 @@ import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
     private EditText et_university, et_name, et_number, et_code;
-    private Button submitBtn,requestCodeBtn;
+    private Button submitBtn, requestCodeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +73,7 @@ public class SignupActivity extends AppCompatActivity {
                     @Override
                     public void callback(String url, JSONObject object, AjaxStatus status) {
                         if (status.getCode() == 200) {
-
+                            startActivity(new Intent(SignupActivity.this, SetPinActivity.class));
                         } else {
 
                         }
