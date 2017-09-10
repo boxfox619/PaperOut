@@ -35,7 +35,8 @@
         <activity
             android:name=".activity.SetPasswordActivity"
             android:theme="@style/NoActionBar" />
-        <activity android:name=".activity.SetPinActivity"></activity>
+        <activity android:name=".activity.SetPinActivity"
+            android:theme="@style/NoActionBar"></activity>
     </application>
 
 </manifest>
