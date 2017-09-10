@@ -5,10 +5,8 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
@@ -18,6 +16,7 @@ import android.widget.TextView;
 import com.hellochain.paperoutapplication.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -43,17 +42,24 @@ public class PinInputView extends RelativeLayout implements View.OnClickListener
         initializeView(attrs);
     }
 
+    public void reset(){
+        pins.removeAll(pins);
+        for(int i = 0 ; i < pinCheckLayout.getChildCount(); i++){
+            ((PinCheckCircle)pinCheckLayout.getChildAt(i)).setDeactive();
+        }
+    }
+
     public PinInputView setOnFinishListener(OnFinishEnterPin listener) {
         this.listener = listener;
         return this;
     }
 
-    private void setErrorMessage(String msg) {
+    public void setErrorMessage(String msg) {
         tvMessage.setText(msg);
         tvMessage.setTextColor(Color.RED);
     }
 
-    private void seMessage(String msg) {
+    public void setMessage(String msg) {
         tvMessage.setText(msg);
         tvMessage.setTextColor(Color.BLACK);
     }
@@ -122,7 +128,7 @@ public class PinInputView extends RelativeLayout implements View.OnClickListener
         }
     }
 
-    public abstract class OnFinishEnterPin {
+    public abstract static class OnFinishEnterPin {
         public void onFinish(List<Integer> pins) {}
         public void onFinish(String pinStr) {}
     }

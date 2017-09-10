@@ -7,7 +7,7 @@
     <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:scale_base_height="100"
+        app:scale_base_height="120"
         app:scale_base_width="100">
 
         <LinearLayout
@@ -28,19 +28,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
-            app:scale_height="10"
+            android:gravity="center"
+            android:textColor="@android:color/darker_gray"
+            app:scale_height="15"
             app:scale_left="0"
-            app:scale_top="28"
+            app:scale_top="30"
             app:scale_width="100"
-            app:scale_textsize="5"/>
+            app:scale_textsize="4"/>
 
         <TableLayout
             android:id="@+id/layout_keyboard"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:stretchColumns="*"
-            app:scale_height="60"
-            app:scale_top="35"
+            app:scale_height="70"
+            app:scale_top="50"
             app:scale_width="100">
 
         </TableLayout>

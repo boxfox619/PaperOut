@@ -19,6 +19,8 @@
     <string name="signup_btn_submit">가입완료</string>
     <string name="signup_set_password_submit">비밀번호 설정 완료</string>
     <string name="signup_set_pin">PIN 번호 설정</string>
+    <string name="signup_request_password_confirm">비밀번호를 다시 입력해 주세요</string>
+    <string name="signup_error_password">비밀번호가 일치하지 않습니다.\n 다시 입력해 주세요</string>
 
     <string name="guide_select_paper">발급받을 <b>증명서</b>를 <b>선택</b>해주세요</string>
     <string name="paper_select_submit">발급받기</string>
