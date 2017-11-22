@@ -66,7 +66,6 @@ public class SplashActivity extends AppCompatActivity {
                 nextStep();
             } else {
                 Toast.makeText(this, getString(R.string.warning_need_permission), Toast.LENGTH_LONG).show();
-
             }
 
         }

@@ -45,6 +45,7 @@
 
     <string name="msg_need_choose_paper">증명서를 선택해 주세요!</string>
     <string name="msg_login_fail">로그인에 실패했습니다</string>
+    <string name="msg_register_fail">회원가입에 실패했습니다</string>
 
     <string name="request_paper_guide"><b>증명셔 요청</b>이 들어왔습니다</string>
     <string name="request_paper_kind"><b>요청서류</b> : </string>
@@ -68,11 +69,11 @@
     <string name="warning_need_permission">권한을 허용하지 않아 서비스를 사용할 수 없습니다!</string>
 
 
-    <string name="server_host"></string>
+    <string name="server_host">http://hellochain.gachon.ac.kr</string>
     <string name="url_get_paper_list"></string>
     <string name="url_get_printed_paper_list"></string>
-    <string name="url_login"></string>
-    <string name="url_register"></string>
+    <string name="url_login">/user/login/</string>
+    <string name="url_register">/user/register/</string>
     <string name="url_paper_download"></string>
     <string name="url_paper_send"></string>
 </resources>

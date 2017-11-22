@@ -50,31 +50,24 @@ public class SigninActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String tmpEmail = "tjfh3217@gc.gachon.ac.kr";
-                String tmpPassword = "12341234";
-                if (tmpEmail.equals(et_id.getText().toString()) && tmpPassword.equals(et_password.getText().toString())) {
-                    Realm realm = Realm.getDefaultInstance();
-                    realm.beginTransaction();
-                    User user = realm.createObject(User.class);
-                    user.setId(et_id.getText().toString());
-                    user.setPassword(et_password.getText().toString());
-                    realm.commitTransaction();
-                    startActivity(new Intent(SigninActivity.this, MainActivity.class));
-                    finish();
-                } else {
-                    Snackbar.make(((View) loginBtn.getParent().getParent()), getResources().getString(R.string.msg_login_fail), Snackbar.LENGTH_SHORT).show();
-                }
-                /*AQuery aq = new AQuery(SigninActivity.this);
-                aq.ajax(getResources().getString(R.string.server_host)+getResources().getString(R.string.url_login), getParams(), JSONObject.class, new AjaxCallback<JSONObject>(){
+                AQuery aq = new AQuery(SigninActivity.this);
+                aq.ajax(getResources().getString(R.string.server_host) + getResources().getString(R.string.url_login)+et_id.getText().toString()+"/"+et_password.getText().toString(), JSONObject.class, new AjaxCallback<JSONObject>() {
                     @Override
                     public void callback(String url, JSONObject object, AjaxStatus status) {
-                        if(status.getCode() == 200){
-
-                        }else{
-                            Snackbar.make(((View)loginBtn.getParent().getParent()), getResources().getString(R.string.msg_login_fail), Snackbar.LENGTH_SHORT).show();
+                        if (status.getCode() == 200) {
+                            Realm realm = Realm.getDefaultInstance();
+                            realm.beginTransaction();
+                            User user = realm.createObject(User.class);
+                            user.setId(et_id.getText().toString());
+                            user.setPassword(et_password.getText().toString());
+                            realm.commitTransaction();
+                            startActivity(new Intent(SigninActivity.this, MainActivity.class));
+                            finish();
+                        } else {
+                            Snackbar.make(((View) loginBtn.getParent().getParent()), getResources().getString(R.string.msg_login_fail), Snackbar.LENGTH_SHORT).show();
                         }
                     }
-                });*/
+                });
             }
         });
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -87,8 +80,8 @@ public class SigninActivity extends AppCompatActivity {
 
     private Map<String, String> getParams() {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("username", et_id.getText().toString());
-        params.put("password", et_password.getText().toString());
+        params.put("id", et_id.getText().toString());
+        params.put("pass", et_password.getText().toString());
         return params;
     }
 }
