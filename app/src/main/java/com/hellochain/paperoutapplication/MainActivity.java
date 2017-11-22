@@ -1,9 +1,13 @@
 package com.hellochain.paperoutapplication;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Environment;
+import android.os.PowerManager;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -25,13 +29,21 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.hellochain.paperoutapplication.activity.PaperPrintActivity;
+import com.hellochain.paperoutapplication.data.Paper;
 import com.hellochain.paperoutapplication.data.User;
 import com.hellochain.paperoutapplication.view.paperlist.LinearListUitl;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,8 +52,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
     private LinearListUitl.LinearList paperListView;
@@ -76,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (paperListView.isItemSelected()) {
                     String item = (String) paperListView.getSelectedItem();
+                    String paperUrl = Realm.getDefaultInstance().where(Paper.class).findFirst().getPaperUrl();
+                    showProgressDialog(paperUrl);
 
                 } else {
                     Snackbar.make(((View) paperListView.getView().getParent().getParent()), getString(R.string.msg_need_choose_paper), Snackbar.LENGTH_SHORT).show();
@@ -117,7 +133,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        //loadPrintedPapers();
+        loadPrintedPapers();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadPrintedPapers();
     }
 
     public static boolean isEmailValid(String email) {
@@ -132,24 +154,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadPrintedPapers() {
-        Realm realm = Realm.getDefaultInstance();
-        AQuery aq = new AQuery(this);
-        Map<String, Object> params = new HashMap<>();
-        params.put("user", realm.where(User.class).findFirst().getId());
-        aq.ajax(getString(R.string.server_host) + getString(R.string.url_get_printed_paper_list), params, JSONArray.class, new AjaxCallback<JSONArray>() {
-            @Override
-            public void callback(String url, JSONArray arr, AjaxStatus status) {
-                List<String> papers = new ArrayList<String>();
-                for (int i = 0; i < arr.length(); i++) {
-                    try {
-                        papers.add(arr.getString(i));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-                paperListView.loadPapers(papers);
-            }
-        });
+        RealmResults<Paper> papers = Realm.getDefaultInstance().where(Paper.class).findAll();
+        List<String> paperList = new ArrayList<>();
+        for (Paper paper : papers) {
+            paperList.add(paper.getPapaerName());
+        }
+        paperListView.loadPapers(paperList);
     }
 
     @Override
@@ -168,5 +178,115 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private ProgressDialog progressBar;
+
+    private void showProgressDialog(String url) {
+        progressBar = new ProgressDialog(MainActivity.this);
+        progressBar.setMessage("다운로드중");
+        progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressBar.setIndeterminate(true);
+        progressBar.setCancelable(true);
+
+        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        File outputFile = new File(path, "Alight.avi"); //파일명까지 포함함 경로의 File 객체 생성
+
+        final DownloadFilesTask downloadTask = new DownloadFilesTask(MainActivity.this);
+        downloadTask.execute(url);
+
+        progressBar.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                downloadTask.cancel(true);
+            }
+        });
+    }
+
+    private class DownloadFilesTask extends AsyncTask<String, String, Long> {
+
+        private Context context;
+
+        public DownloadFilesTask(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.show();
+        }
+
+        @Override
+        protected Long doInBackground(String... string_url) { //3
+            int count;
+            long FileSize = -1;
+            InputStream input = null;
+            OutputStream output = null;
+            URLConnection connection = null;
+            try {
+                URL url = new URL(string_url[0]);
+                connection = url.openConnection();
+                connection.connect();
+
+                FileSize = connection.getContentLength();
+                input = new BufferedInputStream(url.openStream());
+                File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                File outputFile = new File(path, string_url[0].substring(string_url[0].lastIndexOf("/"), string_url[0].length()));
+                byte data[] = new byte[1024];
+                long downloadedSize = 0;
+                while ((count = input.read(data)) != -1) {
+                    if (isCancelled()) {
+                        input.close();
+                        return Long.valueOf(-1);
+                    }
+
+                    downloadedSize += count;
+
+                    if (FileSize > 0) {
+                        float per = ((float) downloadedSize / FileSize) * 100;
+                        String str = "Downloaded " + downloadedSize + "KB / " + FileSize + "KB (" + (int) per + "%)";
+                        publishProgress("" + (int) ((downloadedSize * 100) / FileSize), str);
+                    }
+                    output.write(data, 0, count);
+                }
+                output.flush();
+                output.close();
+                input.close();
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (output != null)
+                        output.close();
+                    if (input != null)
+                        input.close();
+                } catch (IOException ignored) {
+                }
+            }
+            return FileSize;
+        }
+
+        @Override
+        protected void onProgressUpdate(String... progress) {
+            super.onProgressUpdate(progress);
+            progressBar.setIndeterminate(false);
+            progressBar.setMax(100);
+            progressBar.setProgress(Integer.parseInt(progress[0]));
+            progressBar.setMessage(progress[1]);
+        }
+
+        @Override
+        protected void onPostExecute(Long size) {
+            super.onPostExecute(size);
+            progressBar.dismiss();
+            if (size > 0) {
+                Toast.makeText(getApplicationContext(), "다운로드 완료되었습니다. 파일 크기=" + size.toString(), Toast.LENGTH_LONG).show();
+            } else
+                Toast.makeText(getApplicationContext(), "다운로드 에러", Toast.LENGTH_LONG).show();
+        }
+
     }
 }

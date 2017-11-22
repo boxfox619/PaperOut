@@ -35,8 +35,11 @@
         <activity
             android:name=".activity.SetPasswordActivity"
             android:theme="@style/NoActionBar" />
-        <activity android:name=".activity.SetPinActivity"
-            android:theme="@style/NoActionBar"></activity>
+        <activity
+            android:name=".activity.SetPinActivity"
+            android:theme="@style/NoActionBar" />
+        <activity android:name=".DownloadPaperActivity"
+            android:theme="@style/NoActionBar" ></activity>
     </application>
 
 </manifest>

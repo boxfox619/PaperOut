@@ -36,18 +36,6 @@
             app:scale_textsize="5"/>
 
 
-        <TextView
-            android:id="@+id/btn_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/guide_finish_print_paper_detail"
-            android:textAlignment="center"
-            app:scale_width="100"
-            app:scale_height="15"
-            app:scale_top="60"
-            app:scale_left="25"
-            app:scale_textsize="4"/>
-
         <Button
             android:id="@+id/btn_finish"
             android:layout_width="match_parent"
@@ -59,6 +47,18 @@
             app:scale_top="80"
             app:scale_left="25"
             app:scale_textsize="4"/>
+
+        <TextView
+            android:id="@+id/btn_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/guide_finish_print_paper_detail"
+            android:textAlignment="center"
+            app:scale_height="15"
+            app:scale_left="25"
+            app:scale_textsize="4"
+            app:scale_top="60"
+            app:scale_width="100" />
 
     </com.ssomai.android.scalablelayout.ScalableLayout>
 

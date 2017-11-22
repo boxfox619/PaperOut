@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,6 +20,8 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.github.ajalt.reprint.core.Reprint;
 import com.hellochain.paperoutapplication.R;
+import com.hellochain.paperoutapplication.data.Paper;
+import com.hellochain.paperoutapplication.data.User;
 import com.hellochain.paperoutapplication.view.tablayout.FingerprintDetectionPage;
 import com.hellochain.paperoutapplication.view.tablayout.FinishDownloadPaperFragment;
 import com.hellochain.paperoutapplication.view.tablayout.PaperPrintFinishFragment;
@@ -26,9 +29,14 @@ import com.hellochain.paperoutapplication.view.tablayout.PaperSelectPage;
 import com.hellochain.paperoutapplication.view.tablayout.PaperSendFinishFragment;
 import com.hellochain.paperoutapplication.view.tablayout.TabCycleLayout;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import io.realm.Realm;
 
 public class PaperPrintActivity extends AppCompatActivity {
     public static final int ACTION_TYPE_PRINT = 0;
@@ -136,7 +144,28 @@ public class PaperPrintActivity extends AppCompatActivity {
     }
 
     private void requestPrintPaper() {
-
+        String requestUrl = getString(R.string.server_host) + getString(R.string.url_paper_request) + Realm.getDefaultInstance().where(User.class).findFirst().getId();
+        AQuery aq = new AQuery(this);
+        aq.ajax(requestUrl, JSONObject.class, new AjaxCallback<JSONObject>() {
+            @Override
+            public void callback(String url, JSONObject object, AjaxStatus status) {
+                try {
+                    if (object.getString("status").equals("success")) {
+                        Realm realm = Realm.getDefaultInstance();
+                        realm.beginTransaction();
+                        Paper paper = realm.createObject(Paper.class);
+                        paper.setPapaerName("재학증명서");
+                        paper.setPaperUrl(object.getString("url"));
+                        realm.commitTransaction();
+                        tabCycleLayout.next();
+                    } else {
+                        Toast.makeText(PaperPrintActivity.this, getString(R.string.fail_request_paper), Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void sendPaper() {
@@ -149,12 +178,12 @@ public class PaperPrintActivity extends AppCompatActivity {
         }
         String requestUrl = getString(R.string.server_host) + getString(R.string.url_paper_send) + "?email=" + email + "&paper=" + item;
         AQuery aq = new AQuery(this);
-        aq.ajax(requestUrl, String.class, new AjaxCallback<String>(){
+        aq.ajax(requestUrl, String.class, new AjaxCallback<String>() {
             @Override
             public void callback(String url, String object, AjaxStatus status) {
-                if(status.getCode() == 200){
+                if (status.getCode() == 200) {
                     tabCycleLayout.next();
-                }else{
+                } else {
                     Toast.makeText(PaperPrintActivity.this, getString(R.string.fail_send_paper), Toast.LENGTH_SHORT).show();
                     finish();
                 }

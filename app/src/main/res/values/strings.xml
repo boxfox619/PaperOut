@@ -68,6 +68,8 @@
 
     <string name="warning_need_permission">권한을 허용하지 않아 서비스를 사용할 수 없습니다!</string>
 
+    <string name="fail_request_paper">증명서 발급에 실패했습니다</string>
+
 
     <string name="server_host">http://hellochain.gachon.ac.kr</string>
     <string name="url_get_paper_list"></string>
@@ -76,4 +78,5 @@
     <string name="url_register">/user/register/</string>
     <string name="url_paper_download"></string>
     <string name="url_paper_send"></string>
+    <string name="url_paper_request">/data/</string>
 </resources>

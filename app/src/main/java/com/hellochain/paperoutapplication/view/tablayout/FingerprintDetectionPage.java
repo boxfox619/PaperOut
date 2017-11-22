@@ -98,17 +98,17 @@ public class FingerprintDetectionPage extends Fragment {
 
     private void showPasswordInputDialog() {
         View view = getActivity().getLayoutInflater().inflate(R.layout.layout_dialog_edittext, null);
-        PinInputView pinInputView = (PinInputView)view.findViewById(R.id.pin_input_view);
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+        PinInputView pinInputView = (PinInputView) view.findViewById(R.id.pin_input_view);
+        dialogBuilder.setTitle(getResources().getString(R.string.dialog_please_enter_pin));
+        dialogBuilder.setView(view);
+        final AlertDialog dialog = dialogBuilder.show();
         pinInputView.setOnFinishListener(new PinInputView.OnFinishEnterPin() {
             @Override
             public void onFinish(String pinStr) {
-                /*if(success)
-                    sendResultMsg(true);*/
+                dialog.dismiss();
+                sendResultMsg(true);
             }
         });
-        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-        dialog.setTitle(getResources().getString(R.string.dialog_please_enter_pin));
-        dialog.setView(view);
-        dialog.show();
     }
 }
