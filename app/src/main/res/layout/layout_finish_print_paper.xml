@@ -55,7 +55,7 @@
             android:text="@string/guide_finish_print_paper_detail"
             android:textAlignment="center"
             app:scale_height="15"
-            app:scale_left="25"
+            app:scale_left="0"
             app:scale_textsize="4"
             app:scale_top="60"
             app:scale_width="100" />

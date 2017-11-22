@@ -189,9 +189,6 @@ public class MainActivity extends AppCompatActivity {
         progressBar.setIndeterminate(true);
         progressBar.setCancelable(true);
 
-        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        File outputFile = new File(path, "Alight.avi"); //파일명까지 포함함 경로의 File 객체 생성
-
         final DownloadFilesTask downloadTask = new DownloadFilesTask(MainActivity.this);
         downloadTask.execute(url);
 
@@ -203,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private class DownloadFilesTask extends AsyncTask<String, String, Long> {
+    private class DownloadFilesTask extends AsyncTask<String, String, Boolean> {
 
         private Context context;
 
@@ -218,9 +215,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected Long doInBackground(String... string_url) { //3
-            int count;
-            long FileSize = -1;
+        protected Boolean doInBackground(String... string_url) {
+            int len;
             InputStream input = null;
             OutputStream output = null;
             URLConnection connection = null;
@@ -229,32 +225,30 @@ public class MainActivity extends AppCompatActivity {
                 connection = url.openConnection();
                 connection.connect();
 
-                FileSize = connection.getContentLength();
+                int totalSize = connection.getContentLength();
                 input = new BufferedInputStream(url.openStream());
                 File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
                 File outputFile = new File(path, string_url[0].substring(string_url[0].lastIndexOf("/"), string_url[0].length()));
+                output = new FileOutputStream(outputFile);
                 byte data[] = new byte[1024];
                 long downloadedSize = 0;
-                while ((count = input.read(data)) != -1) {
+                while ((len = input.read(data)) != -1) {
                     if (isCancelled()) {
                         input.close();
-                        return Long.valueOf(-1);
+                        return false;
                     }
-
-                    downloadedSize += count;
-
-                    if (FileSize > 0) {
-                        float per = ((float) downloadedSize / FileSize) * 100;
-                        String str = "Downloaded " + downloadedSize + "KB / " + FileSize + "KB (" + (int) per + "%)";
-                        publishProgress("" + (int) ((downloadedSize * 100) / FileSize), str);
+                    downloadedSize += len;
+                    if (totalSize > 0) {
+                        float per = ((float) downloadedSize / totalSize) * 100;
+                        String str = "Downloaded " + downloadedSize + "KB / " + totalSize + "KB (" + (int) per + "%)";
+                        publishProgress("" + (int) ((downloadedSize * 100) / totalSize), str);
                     }
-                    output.write(data, 0, count);
+                    output.write(data, 0, len);
                 }
                 output.flush();
                 output.close();
                 input.close();
-
-
+                return true;
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -266,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (IOException ignored) {
                 }
             }
-            return FileSize;
+            return false;
         }
 
         @Override
@@ -279,11 +273,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(Long size) {
-            super.onPostExecute(size);
+        protected void onPostExecute(Boolean success) {
+            super.onPostExecute(success);
             progressBar.dismiss();
-            if (size > 0) {
-                Toast.makeText(getApplicationContext(), "다운로드 완료되었습니다. 파일 크기=" + size.toString(), Toast.LENGTH_LONG).show();
+            if (success) {
+                Toast.makeText(getApplicationContext(), "다운로드 완료되었습니다.", Toast.LENGTH_LONG).show();
             } else
                 Toast.makeText(getApplicationContext(), "다운로드 에러", Toast.LENGTH_LONG).show();
         }
